@@ -97,8 +97,10 @@ function processCheckIn(registrationId) {
       
       if (!attendance) {
         const now = new Date();
-        const timeStr = Utilities.formatDate(now, "GMT+7", "HH:mm:ss");
-        sheet.getRange(i + 1, 6).setValue(`เข้าร่วมสัมมนา (${timeStr})`);
+        // ปรับรูปแบบเป็น วัน/เดือน/ปี ชั่วโมง:นาที:วินาที
+        const dateTimeStr = Utilities.formatDate(now, "GMT+7", "dd/MM/yyyy HH:mm:ss");
+        // เปลี่ยนข้อความจาก Present เป็น เข้าร่วมสัมมนา
+        sheet.getRange(i + 1, 6).setValue(`เข้าร่วมสัมมนา (${dateTimeStr})`);
         return { success: true, message: `เช็คอินสำเร็จ: คุณ ${name}` };
       } else {
         return { success: false, message: `คุณ ${name} ได้เช็คอินไปแล้ว` };
