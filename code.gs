@@ -33,7 +33,7 @@ function processCheckIn(registrationId) {
       if (!attendance) {
         const now = new Date();
         const timeStr = Utilities.formatDate(now, "GMT+7", "HH:mm:ss");
-        sheet.getRange(i + 1, 6).setValue(`Present (${timeStr})`);
+        sheet.getRange(i + 1, 6).setValue(`เข้าร่วมสัมมนา (${timeStr})`);
         return { success: true, message: `เช็คอินสำเร็จ: คุณ ${name}` };
       } else {
         return { success: false, message: `คุณ ${name} ได้เช็คอินไปแล้ว` };
